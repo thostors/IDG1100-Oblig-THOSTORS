@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>IDG1100 OBLIG</h1>
+        </div>
+    </header>
+
+    <div class="box1">
+        <h2>Section I – OS, Kernel, Shell</h2>
+        <p>
+            1. The components that are apart of Von Neumans Architecture are the following: The Centeral Processing
+            Unit (CPU) containing an arithmetic logic unit and a processor registers,
+            A control unit, memory that stores data and instructions, external mass storage and input/output device.
+        </p>
+
+        <p>
+            2. The user space is system memory that runs applications in a computer OS.
+        </p>
+
+        <p>
+            3. The easy way to explain the shell would be that it is a program that takes the users commands and
+            gives
+            it to ur OS to perform.
+            The many different commands can perform various task for your computer to do,
+            the shell is a very powerful tool.
+        </p>
+
+        <p>
+            4. The shell is located in the user space.
+        </p>
+
+        <p>
+            5. The main task of the shell is to read and execute commands.
+        </p>
+    </div>
+
+    <div class="box2">
+        <h2>
+            Section II – UNIX, Scripting
+        </h2>
+
+        <p>
+            6. The octal representation of a file that only can be read and written by its owner would be 6 0 0,
+            6 as in read and write permissions for the owner, and 0 as in no permission for the rest.
+        </p>
+        <p>
+            7. The common name for that user would be superuser.
+        </p>
+        <p>
+            8.
+            user, group and others
+        </p>
+        <p>
+            9. As of 2020 about 70%.
+        </p>
+        <p>
+            10. Connect to a remote server (Create a secure connection between two hosts)
+        </p>
+        <p>
+            11. pwd
+        </p>
+        <p>
+            12. mv (example: mv example1.txt example2.txt
+        </p>
+        <p>
+            13. crontab -e, followed by further instructions such as when it should be scheduled and what it
+            will do.
+        </p>
+        <p>
+            14. kill 123
+        </p>
+        <p>
+            15. sudo -s
+        </p>
+        <p>
+            16. 30 * * * 7
+        </p>
+        <p>
+            17. 30 * 15 * *
+        </p>
+        <p>
+            18. 30 05 * 6 0-1
+        </p>
+        <div>
+            <p>
+                24. STEP 1. Firstly you need to access the root user using the command "sudo -s" followed by password.
+            </p>
+            <p>
+                STEP 2. Create your cronjob with command "crontab -e" and select editor (my editor is nano)
+            </p>
+            <p>
+                Step 3. Then on to creating the cronjob that prints "Task scheduled at date" every 30 minutes today
+                <br>
+                - You now need to make a file for the script to output. use "touch filename.txt" to create your txt
+                file.
+                (filename is up to you)
+                <br>
+                - Set the schedule for the cronjob, for this task it is todays date + every 30 mintues. for me it will
+                be 30
+                * 20 11 5, since its friday the 20th november while making this tutorial.
+                <br>
+                - Find the path of the txt file you created earlier, i created tutorial.txt inside IDG1100 so for me its
+                home/thostors/IDG1100/tutorial.txt
+                <br>
+                - Now create an echo for the cronjob to execute. For this task we will echo "Task scheduled at $(date)
+                <br>
+                - Combine the steps to create the script "30 * 19 11 4 echo "Task scheduled at $(date)" >>
+                home/thostors/IDG1100/tutorial.txt"
+            </p>
+            <p>
+                STEP 4. Now to start the cronjob. First time start-up, use "service cron status" to see if it is running
+                or
+                not. If its not running use "serice cron start". Use "service cron status" to confirm that you have
+                started
+                it.
+            </p>
+            <p>
+                STEP 5. After 30 mintues check your output file to see if the cronjob did its job. For me it looked like
+                this "Task scheduled at Fri Nov 20 12:28:01 CET 2020".
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="box3">
+        <h2>
+            Section II – UNIX, Scripting (CODE)
+        </h2>
+        <code>
+            19. 
+            #!/bin/bash
+            echo "Enter your name"
+            
+            
+            read name
+            
+            
+            echo "Hello $name, todays date is $(date)"
+        </code>
+        <br>
+        <code>
+            20. 
+            #!/bin/bash
+            
+            read -p "Enter first number: " num1
+            read -p "Enter second number: " num2
+            
+            sum=$(( $num1 + $num2 ))
+            
+            echo "Sum is: $sum"
+        </code>
+        <br>
+        <code>
+            21.
+            #!/bin/bash
+            echo "Enter username"
+            
+            
+            read username
+            
+            
+            echo "$username stored"
+        </code>
+        <br>
+        <code>
+            22.
+            #!/bin/bash
+            echo "This script is running on $(hostname)"
+        </code>
+        <br>
+        <code>
+            23.
+            #!/bin/bash
+            echo "This script is running from $(pwd)"
+        </code>
+        <hr>
+        <br>
+        <code>
+            25.
+            <br>
+            #!/bin/bash
+            <br>
+while [ "$NUMBER" != "9" ]
+do
+<br>
+echo "1. Question 1 -Who is the lead guitarist in Avenged Sevenfold?"
+<br>
+echo "2. Who won the 2020 Election"
+<br>
+echo "3. How long does it take for a tomato to grow?"
+<br>
+echo "4. What is the capital of norway?"
+<br>
+echo "Choose a question 1-4: "
+<br>
+read -r NUMBER
+<br>
+case $NUMBER in
+<br>
+1) clear
+echo "synyster gates"
+read -r
+;;
+<br>
+
+2) clear
+echo "Joe Biden"
+read -r
+;;
+<br>
+3) clear
+echo "50-60 days"
+read -r
+;;
+<br>
+4) clear
+echo "Oslo"
+read -r
+;;
+<br>
+9) echo Scriptet ended
+exit
+;;
+esac
+done
+        </code>
+    </div>
+
+
+    <hr>
+    <footer>
+        IDG1100 oblig Thomas Storsveen
+    </footer>
+</body>
+
+
+
+</html>
